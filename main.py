@@ -38,15 +38,15 @@ def get_word():
     word = None
     while True:
         cat = input('Which option would you like? : ').lower()
-        if cat == 'weather':
+        if cat == 'weather' or cat == '1':
             word = random.choice(weather_words)
             print('\nChosen Category: WEATHER \n(Guess letters for a word used to describe the weather)')
             break
-        elif cat == 'animals' or cat == 'animal':
+        elif cat == 'animals' or cat == 'animal' or cat == '2':
             word = random.choice(animal_words)
-            print('\nChosen Category: ANIMALS \n(Guess letters for a word that is an animal)')
+            print('\nChosen Category: ANIMALS \n(Guess letters for an animal)')
             break
-        elif cat == 'drinks' or cat == 'drink':
+        elif cat == 'drinks' or cat == 'drink' or cat == '3':
             word = random.choice(drink_words)
             print('\nChosen Category: DRINKS \n(Guess letters for a word that is a type of drink)')
             break
@@ -92,7 +92,6 @@ def play_game():
                 idx = 0
                 for letter in word:
                     if letter == entry:
-                        print('Found same letter at index:', idx)
                         blanks[idx] = entry
                     idx += 1
             else:
@@ -110,13 +109,6 @@ def play_game():
         else:
             print('Input error: Please enter one letter.')
 
-
-
-        # user guesses whole word
-        # if entry == word:
-        #     print('You guessed the word! \nYOU WIN! \nThe word was:', word)
-        # else:
-        #     print('Sorry that is not the word.')
 
 
     play_again()
