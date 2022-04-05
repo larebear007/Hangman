@@ -22,7 +22,8 @@ def play_again():
 
 def get_word():
     weather_words = ['sunny', 'rainy', 'cloudy', 'thundering', 'breezy', 'wintry', 'squalling', 'sprinkling']
-    animal_words = ['poodle', 'zebra', 'elk', 'ocelot', 'condor', 'butterfly', 'gecko', 'rhinoceros']
+    animal_words = ['poodle', 'zebra', 'elk', 'ocelot', 'condor', 'butterfly', 'gecko', 'rhinoceros',
+                    'puma', 'elephant', 'lemur', 'bison', 'alligator', 'aardvark', 'opossum']
     drink_words = ['chai', 'coke', 'rootbeer', 'water', 'lemonade', 'coffee', 'milk', 'sprite', 'juice']
 
     # options
@@ -31,11 +32,12 @@ def get_word():
     print('OPTION 2: animals')
     time.sleep(.5)
     print('OPTION 3: drinks')
-    cat = input('Which option would you like? : ').lower()
+
 
     # random word assignment
     word = None
     while True:
+        cat = input('Which option would you like? : ').lower()
         if cat == 'weather':
             word = random.choice(weather_words)
             print('\nChosen Category: WEATHER \n(Guess letters for a word used to describe the weather)')
@@ -49,8 +51,8 @@ def get_word():
             print('\nChosen Category: DRINKS \n(Guess letters for a word that is a type of drink)')
             break
         else:
-            print('Hmm I didn\'t understand that choice. Please type "weather", "animals" or "drinks" \
-            as your category choice. ')
+            print('Hmm I didn\'t understand that choice. Please type "weather", "animals" or "drinks" '
+                  'as your category choice. ')
             continue
 
     return word
@@ -65,7 +67,6 @@ def play_game():
     tries = -1
     while True:
         # record of word
-        print(word)
         print('\n' + ''.join(blanks))
 
         # finished guessing
@@ -75,7 +76,7 @@ def play_game():
 
         # tries left
         tries += 1
-        if tries <= 7: print('You have', 7 - tries, 'tries remaining.')
+        if tries < 7: print('You have', 7 - tries, 'tries remaining.')
         else:
             print('Oh no, you are all out of tries! YOU LOSE! \nThe word was:', word)
             break
@@ -87,7 +88,7 @@ def play_game():
         if len(entry) == 1:
             if entry in word:
                 print('Great job! That letter is in the word.')
-                # REMOVED IF/ELSE HERE: see testing (1)
+                # looping to catch multiple letter occurrence
                 idx = 0
                 for letter in word:
                     if letter == entry:
