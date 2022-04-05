@@ -87,13 +87,13 @@ def play_game():
         if len(entry) == 1:
             if entry in word:
                 print('Great job! That letter is in the word.')
-                if entry in blanks:
-                    start = blanks.index(entry)
-                    pos = word.find(entry, start + 1)
-                    blanks[pos] = entry
-                else:
-                    pos = word.find(entry)
-                    blanks[pos] = entry
+                # REMOVED IF/ELSE HERE: see testing (1)
+                idx = 0
+                for letter in word:
+                    if letter == entry:
+                        print('Found same letter at index:', idx)
+                        blanks[idx] = entry
+                    idx += 1
             else:
                 print('No good. That letter is not in the word.')
 
